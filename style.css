@@ -1,0 +1,120 @@
+.tg {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  .tg td {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 10px 5px;
+    /* border-style: solid;
+            border-width: 1px; */
+    overflow: hidden;
+    word-break: normal;
+    /* border-color: black; */
+  }
+
+  .tg th {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 10px 5px;
+    /* border-style: solid;
+            border-width: 1px; */
+    overflow: hidden;
+    word-break: normal;
+    /* border-color: black; */
+  }
+
+  .tg .tg-0lax {
+    text-align: left;
+    vertical-align: top;
+    margin-left: 5px;
+  }
+
+  .but {
+    text-align: center;
+  }
+
+  input[name="title"] {
+    border-radius: 10px;
+    margin-left: 10px;
+  }
+
+  input[type="button"] {
+    border-radius: 15px;
+  }
+
+  .field {
+    border-radius: 20px;
+  }
+
+  #snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: rgb(70, 33, 33);
+    color: rgb(238, 240, 122);
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+  }
+
+  #snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+
+  @-webkit-keyframes fadein {
+    from {
+      bottom: 0;
+      opacity: 0;
+    }
+
+    to {
+      bottom: 30px;
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadein {
+    from {
+      bottom: 0;
+      opacity: 0;
+    }
+
+    to {
+      bottom: 30px;
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fadeout {
+    from {
+      bottom: 30px;
+      opacity: 1;
+    }
+
+    to {
+      bottom: 0;
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeout {
+    from {
+      bottom: 30px;
+      opacity: 1;
+    }
+
+    to {
+      bottom: 0;
+      opacity: 0;
+    }
+  }
