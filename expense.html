@@ -46,6 +46,37 @@
 
         clip(document.getElementById("result"));
       }
+
+      function calMileage() {
+        var tdistance = document.getElementById("tdistance").value;
+        var fuelFilled = document.getElementById("fFilled").value;
+
+        let mileage = Math.round(tdistance / fuelFilled);
+        console.log(mileage);
+
+        document.getElementById("jsonhead2").style.display = "block";
+        document.getElementById("mileage").innerText =
+          "Vehicle mileage: " + mileage + " Km/Ltr";
+
+          var clip = function (el) {
+          var range = document.createRange();
+          range.selectNodeContents(el);
+          var sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          document.execCommand("Copy");
+          sel.removeRange(range);
+
+          //show toast
+          var x = document.getElementById("snackbar");
+          x.className = "show";
+          setTimeout(function () {
+            x.className = x.className.replace("show", "");
+          }, 750);
+        };
+
+        clip(document.getElementById("mileage"));
+      }
     </script>
   </head>
 
@@ -60,7 +91,7 @@
         margin-top: 15px;
       "
     >
-      <div id="left" style="width: 35%; float: left; height: 510px">
+      <div id="leftend" style="width: 35%; float: left; height: 510px">
         <fieldset class="field">
           <legend>Fuel N Tolls</legend>
           <table class="tg">
@@ -147,6 +178,53 @@
           </div>
         </fieldset>
       </div>
+      <div id="leftend" style="width: 35%; float: left; height: 510px">
+        <fieldset class="field">
+          <legend>Mileage</legend>
+          <table class="tg">
+            <tr>
+              <td class="tg-0lax">Distance</td>
+              <td class="tg-0lax">
+                <input
+                  name="title"
+                  id="tdistance"
+                  type="number"
+                  value=""
+                  size="10"
+                  aria-required="true"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="tg-0lax">Fuel filled</td>
+              <td class="tg-0lax">
+                <input
+                  name="title"
+                  id="fFilled"
+                  type="number"
+                  value=""
+                  size="10"
+                  aria-required="true"
+                />
+              </td>
+            </tr>
+          </table>
+          <br />
+          <div class="but">
+            <input
+              type="button"
+              onclick="calMileage();"
+              value="Calculate mileage"
+            />
+            <input
+              type="text"
+              value="GeeksForGeeks"
+              id="GfGInput"
+              style="display: none"
+            />
+          </div>
+        </fieldset>
+      </div>
     </div>
     <div id="rightend" style="width: 50%; float: right; height: 510px">
       <h2
@@ -159,6 +237,21 @@
         name="result"
         style="margin-left: 45px"
         id="result"
+        cols="30"
+        rows="10"
+      ></pre>
+    </div>
+    <div id="rightend" style="width: 50%; float: right; height: 510px">
+      <h2
+        id="jsonhead2"
+        style="display: none; margin-left: 45px; margin-top: 50px"
+      >
+        Mileage
+      </h2>
+      <pre
+        name="mileage"
+        style="margin-left: 45px"
+        id="mileage"
         cols="30"
         rows="10"
       ></pre>
