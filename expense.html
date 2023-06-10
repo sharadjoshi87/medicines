@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <script>
+      let jsonText = "",
+        textTo = "";
+
+      function saveTextAsFile() {
+        var distance = document.getElementById("distance").value;
+        var average = document.getElementById("avg").value;
+        var fuel = document.getElementById("fuel").value;
+        var toll = document.getElementById("toll").value;
+        var persons = document.getElementById("persons").value;
+
+        let totalExpense = Math.round((distance / average) * fuel + toll);
+        console.log(totalExpense);
+        let perPerson = Math.round(totalExpense / persons);
+        console.log(perPerson);
+
+        document.getElementById("jsonhead").style.display = "block";
+        document.getElementById("result").innerText =
+          "Total expense: " +
+          totalExpense +
+          "/- Per person: " +
+          perPerson +
+          "/-";
+
+        var clip = function (el) {
+          var range = document.createRange();
+          range.selectNodeContents(el);
+          var sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          document.execCommand("Copy");
+          sel.removeRange(range);
+
+          //show toast
+          var x = document.getElementById("snackbar");
+          x.className = "show";
+          setTimeout(function () {
+            x.className = x.className.replace("show", "");
+          }, 750);
+        };
+
+        clip(document.getElementById("result"));
+      }
+    </script>
+  </head>
+
+  <body>
+    <div
+      id="main"
+      style="
+        height: 510px;
+        align-self: center;
+        width: 85%;
+        margin-left: 35px;
+        margin-top: 15px;
+      "
+    >
+      <div id="left" style="width: 35%; float: left; height: 510px">
+        <fieldset class="field">
+          <legend>Fuel N Tolls</legend>
+          <table class="tg">
+            <tr>
+              <td class="tg-0lax">Travelled</td>
+              <td class="tg-0lax">
+                <input
+                  name="title"
+                  id="distance"
+                  type="number"
+                  value=""
+                  size="10"
+                  aria-required="true"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="tg-0lax">Vehicle avg.</td>
+              <td class="tg-0lax">
+                <input
+                  name="title"
+                  id="avg"
+                  type="number"
+                  value=""
+                  size="10"
+                  aria-required="true"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="tg-0lax">Fuel /ltr</td>
+              <td class="tg-0lax">
+                <input
+                  name="title"
+                  id="fuel"
+                  type="number"
+                  value=""
+                  size="10"
+                  aria-required="true"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="tg-0lax">Total toll.</td>
+              <td class="tg-0lax">
+                <input
+                  name="title"
+                  id="toll"
+                  type="number"
+                  value=""
+                  size="10"
+                  aria-required="true"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td class="tg-0lax">Persons</td>
+              <td class="tg-0lax">
+                <input
+                  type="number"
+                  id="persons"
+                  name="title"
+                  value=""
+                  size="10"
+                  min="1"
+                  max="10"
+                />
+              </td>
+            </tr>
+          </table>
+          <br />
+          <div class="but">
+            <input
+              type="button"
+              onclick="saveTextAsFile();"
+              value="Calculate"
+            />
+            <input
+              type="text"
+              value="GeeksForGeeks"
+              id="GfGInput"
+              style="display: none"
+            />
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    <div id="rightend" style="width: 50%; float: right; height: 510px">
+      <h2
+        id="jsonhead"
+        style="display: none; margin-left: 45px; margin-top: 50px"
+      >
+        Calculation
+      </h2>
+      <pre
+        name="result"
+        style="margin-left: 45px"
+        id="result"
+        cols="30"
+        rows="10"
+      ></pre>
+    </div>
+    <div id="snackbar">Calculation done . . .</div>
+  </body>
+</html>
