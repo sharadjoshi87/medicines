@@ -27,7 +27,7 @@
     <!-- Main content -->
     <div class="container">
       <!-- Content here -->
-      <br>
+      <br />
       <h6>Mileage | Calculation</h6>
       <div class="table-responsive">
         <table class="table">
@@ -57,25 +57,24 @@
                   aria-describedby="addon-wrapping"
                   id="fFilled"
                   required
-                /> 
+                />
               </td>
             </tr>
-            <tr>
-              <td>
-                <button
+          </tbody>
+        </table>
+        <div class="container">
+               <button
                   type="button"
                   class="btn btn-dark text-nowrap"
                   onclick="calMileage();"
                 >
-                  Calculate mileage
+                  Calculate Mileage
                 </button>
-              </td>
-              <b id="mileage" class="text-success"></b>
-            </tr>
-          </tbody>
-        </table>
+        </div>
+        <div id="mileage" class="text-success font-weight-bold font-italic"></div>
       </div>
-      <h6>Fuel N Toll | Calculation</h6>
+      <br>
+      <h6>Fuel &  Toll | Calculation</h6>
       <div class="table-responsive">
         <table class="table">
           <tbody>
@@ -149,21 +148,34 @@
                 />
               </td>
             </tr>
-            <tr>
-              <td>
-                <button
-                  type="button"
-                  class="btn btn-dark text-nowrap"
-                  onclick="calFuelToll();"
-                >
-                  Cal. Fuel N Toll
-                </button>
-              </td>
-              <b id="fuelToll" class="text-success"></b>
-            </tr>
           </tbody>
         </table>
-      </div>
+        <div class="container">
+          <button
+            type="button"
+            class="btn btn-dark text-nowrap"
+            onclick="calFuelToll();"
+          >
+            Calculate
+          </button>
+          <button
+            type="button"
+            class="btn btn-dark text-nowrap"
+            onclick="addDetails();"
+          >
+            Add Details
+          </button>
+          <button
+            type="button"
+            class="btn btn-dark text-nowrap"
+            onclick="distribute();"
+          >
+            Distribute
+          </button>
+        </div>
+        <div id="fuelToll" class="text-success font-weight-bold font-italic"></div>
+      </br>
+      <div id="details" class="container"></div>
     </div>
 
     <!-- Optional JavaScript -->
