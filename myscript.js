@@ -1,4 +1,6 @@
-let persons = 0;
+let persons = 0,
+  perPerson = 0;
+let msg = "";
 
 function calFuelToll() {
   let distance = document.getElementById("distance").value;
@@ -9,7 +11,7 @@ function calFuelToll() {
 
   let totalExpense = Math.round((distance / average) * fuel + toll);
   console.log(totalExpense);
-  let perPerson = Math.round(totalExpense / persons);
+  perPerson = Math.round(totalExpense / persons);
   console.log(perPerson);
 
   totalExpense = isNaN(totalExpense) ? 0 : totalExpense;
@@ -36,6 +38,9 @@ function calMileage() {
 }
 
 function addDetails() {
+  document.getElementById("details").innerHTML = "";
+  document.getElementById("details").innerHTML +=
+    "<pre>First person will receive fuel & toll</pre>";
   for (let pID = 1; pID <= persons; pID++) {
     document.getElementById("details").innerHTML +=
       '<input type="text" class="form-control w-50 mx-auto" placeholder="Person ' +
@@ -53,8 +58,37 @@ function addDetails() {
 
 function distribute() {
   for (let cId = 1; cId <= persons; cId++) {
-    let amt = document.getElementById("a" + cId).value / persons;
+    amt = document.getElementById("a" + cId).value / persons;
     document.getElementById("c" + cId).innerHTML +=
       "<kbd>" + amt + " /- per head" + "</kbd";
   }
+
+  for (let index = 1; index < persons; index++) {
+    for (let temp = index + 1; temp <= persons; temp++) {
+      if (index == 1) {
+        msg +=
+          "<b style='color:green !important;'>" +
+          document.getElementById("n" + temp).value +
+          "&emsp;to&emsp;" +
+          document.getElementById("n" + index).value +
+          "&emsp;=&emsp;" +
+          (((document.getElementById("a" + index).value) / persons + perPerson) -
+          ((document.getElementById("a" + temp).value) / persons)) +
+          "/-</b><br>";
+        console.log(document.getElementById("n" + temp).value);
+        console.log(document.getElementById("a" + temp).value / persons);
+      } else {
+        msg +=
+          "<b style='color:green !important;'>" +
+          document.getElementById("n" + temp).value +
+          "&emsp;to&emsp;" +
+          document.getElementById("n" + index).value +
+          "&emsp;=&emsp;" +
+          (((document.getElementById("a" + index).value) / persons) -
+          ((document.getElementById("a" + temp).value) / persons)) +
+          "/-</b><br>";
+      }
+    }
+  }
+  document.getElementById("dist").innerHTML += msg;
 }
