@@ -21,7 +21,9 @@
   <body>
     <!-- Image and text -->
     <nav class="navbar navbar-dark bg-info">
-      <a class="navbar-brand" href="#">Calculate | Distribute | Trip expenses</a>
+      <a class="navbar-brand" href="#"
+        >Calculate | Distribute | Trip expenses</a
+      >
     </nav>
 
     <!-- Main content -->
@@ -63,18 +65,21 @@
           </tbody>
         </table>
         <div class="container">
-               <button
-                  type="button"
-                  class="btn btn-info text-nowrap"
-                  onclick="calMileage();"
-                >
-                  Calculate Mileage
-                </button>
+          <button
+            type="button"
+            class="btn btn-info text-nowrap"
+            onclick="calMileage();"
+          >
+            Calculate Mileage
+          </button>
         </div>
-        <div id="mileage" class="text-success font-weight-bold font-italic"></div>
+        <div
+          id="mileage"
+          class="text-success font-weight-bold font-italic"
+        ></div>
       </div>
-      <br>
-      <h6>Fuel &  Toll | Calculation</h6>
+      <br />
+      <h6>Fuel & Toll | Calculation</h6>
       <div class="table-responsive">
         <table class="table">
           <tbody>
@@ -150,7 +155,10 @@
             </tr>
           </tbody>
         </table>
-        <div class="container">
+      </div>
+
+      <div class="row">
+        <div class="col">
           <button
             type="button"
             class="btn btn-info text-nowrap"
@@ -158,6 +166,8 @@
           >
             Calculate
           </button>
+        </div>
+        <div class="col">
           <button
             type="button"
             class="btn btn-info text-nowrap"
@@ -165,6 +175,8 @@
           >
             Add Details
           </button>
+        </div>
+        <div class="col">
           <button
             type="button"
             class="btn btn-info text-nowrap"
@@ -173,11 +185,15 @@
             Distribute
           </button>
         </div>
-        <div id="fuelToll" class="text-success font-weight-bold font-italic"></div>
-      </br>
+      </div>
+      <div
+        id="fuelToll"
+        class="text-success font-weight-bold font-italic"
+      ></div>
+      <br />
       <div id="details" class="container"></div>
-      <br>
-    <div id="dist"></div>
+      <br />
+      <div id="dist" class="container text-success font-weight-bold font-italic"></div>
     </div>
 
     <!-- Optional JavaScript -->
