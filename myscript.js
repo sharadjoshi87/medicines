@@ -40,17 +40,17 @@ function calMileage() {
 function addDetails() {
   document.getElementById("details").innerHTML = "";
   document.getElementById("details").innerHTML +=
-    "<pre>First person will receive fuel & toll</pre>";
+    "<pre>First person will receive fuel & toll</pre><div class='table-responsive'><table class='table'><tbody>";
   for (let pID = 1; pID <= persons; pID++) {
     document.getElementById("details").innerHTML +=
-      '<input type="text" class="form-control w-50 mx-auto" placeholder="Person ' +
+      '<tr><td><input type="text" class="form-control w-50 mx-auto" placeholder="Person ' +
       pID +
       '" id="n' +
       pID +
-      '"/>' +
-      '<input type="number" class="form-control w-50 mx-auto" placeholder="Amount" id="a' +
+      '"/></td>' +
+      '<td><input type="number" class="form-control w-50 mx-auto" placeholder="Amount" id="a' +
       pID +
-      '"/></td><br/><div class="text-success font-weight-bold font-italic" id="c' +
+      '"/></td></tr></tbody></table></div><div class="text-success font-weight-bold font-italic" id="c' +
       pID +
       '"></div>';
   }
@@ -63,32 +63,34 @@ function distribute() {
       "<kbd>" + amt + " /- per head" + "</kbd";
   }
 
-  for (let index = 1; index < persons; index++) {
+  for (let index = 1; index <= persons; index++) {
     for (let temp = index + 1; temp <= persons; temp++) {
       if (index == 1) {
         msg +=
-          "<b style='color:green !important;'>" +
+          "<div class='row'><div class='col'>" +
           document.getElementById("n" + temp).value +
-          "&emsp;to&emsp;" +
+          "</div><div class='col'>To</div><div class='col'>" +
           document.getElementById("n" + index).value +
-          "&emsp;=&emsp;" +
-          (((document.getElementById("a" + index).value) / persons + perPerson) -
-          ((document.getElementById("a" + temp).value) / persons)) +
-          "/-</b><br>";
+          "</div><div class='col'>=</div><div class='col'>" +
+          (document.getElementById("a" + index).value / persons +
+            perPerson -
+            document.getElementById("a" + temp).value / persons) +
+          "/-</div></div>";
         console.log(document.getElementById("n" + temp).value);
         console.log(document.getElementById("a" + temp).value / persons);
       } else {
         msg +=
-          "<b style='color:green !important;'>" +
+          "<div class='row'><div class='col'>" +
           document.getElementById("n" + temp).value +
-          "&emsp;to&emsp;" +
+          "</div><div class='col'>To</div><div class='col'>" +
           document.getElementById("n" + index).value +
-          "&emsp;=&emsp;" +
-          (((document.getElementById("a" + index).value) / persons) -
-          ((document.getElementById("a" + temp).value) / persons)) +
-          "/-</b><br>";
+          "</div><div class='col'>=</div><div class='col'>" +
+          (document.getElementById("a" + index).value / persons -
+            document.getElementById("a" + temp).value / persons) +
+          "/-</div></div>";
       }
     }
   }
+  // msg += "</table>";
   document.getElementById("dist").innerHTML += msg;
 }
