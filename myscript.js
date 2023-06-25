@@ -9,7 +9,7 @@ function calFuelToll() {
   let toll = document.getElementById("toll").value;
   persons = document.getElementById("persons").value;
 
-  et totalExpense = Math.round((distance / average) * fuel) + Math.round(toll);
+  let totalExpense = Math.round((distance / average) * fuel) + Math.round(toll);
   console.log(totalExpense);
   perPerson = Math.round(totalExpense / persons);
   console.log(perPerson);
@@ -23,6 +23,14 @@ function calFuelToll() {
     "/- Per person: " +
     perPerson +
     "/-</kbd>";
+
+  if (persons < 2) {
+    document.getElementById("adt").disabled = true;
+    document.getElementById("dis").disabled = true;
+  } else {
+    document.getElementById("adt").disabled = false;
+    document.getElementById("dis").disabled = false;
+  }
 }
 
 function calMileage() {
@@ -59,6 +67,7 @@ function addDetails() {
 function distribute() {
   for (let cId = 1; cId <= persons; cId++) {
     amt = document.getElementById("a" + cId).value / persons;
+    document.getElementById("c" + cId).innerHTML = '';
     document.getElementById("c" + cId).innerHTML +=
       "<kbd>" + amt + " /- per head" + "</kbd";
   }
@@ -92,5 +101,7 @@ function distribute() {
     }
   }
   // msg += "</table>";
+  document.getElementById("dist").innerHTML = '';
   document.getElementById("dist").innerHTML += msg;
+  document.getElementById("dis").disabled = true;
 }
