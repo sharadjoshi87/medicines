@@ -9,7 +9,7 @@ function calFuelToll() {
   let toll = document.getElementById("toll").value;
   persons = document.getElementById("persons").value;
 
-  let totalExpense = Math.round((distance / average) * fuel + toll);
+  et totalExpense = Math.round((distance / average) * fuel) + Math.round(toll);
   console.log(totalExpense);
   perPerson = Math.round(totalExpense / persons);
   console.log(perPerson);
