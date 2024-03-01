@@ -1,0 +1,41 @@
+.btn , .NoPrint 
+{
+    display: none;
+}
+
+.form-control
+{
+    border: 0px;
+    resize: none;
+}
+
+.input-group-text
+{
+    border: 0px;
+    background-color: white;
+}
+
+table
+{
+    border : 2px solid grey;
+}
+
+.card 
+{
+    border : 2px solid black;
+}
+
+.footer
+{
+    color: lightgray;
+}
+
+.text-end
+{
+    font-weight: 700; 
+}
+
+.colorPrint
+{
+    background: darkgoldenrod;
+}
