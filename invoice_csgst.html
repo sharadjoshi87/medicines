@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Perfect Traders</title>
+    <!-- For Bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+
+    <!-- CSS For Print Format -->
+    <link rel="stylesheet" media="print" href="./invoiceprint.css" />
+
+    <!-- CSS For Invoice -->
+    <link rel="stylesheet" href="./invoive.css" />
+
+    <!-- jQuery CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.2.slim.js"
+      integrity="sha256-OflJKW8Z8amEUuCaflBZJ4GOg4+JnNh9JdVfoV+6biw="
+      crossorigin="anonymous"
+    ></script>
+    <!-- For Invoice  -->
+    <script src="./invoice.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <div class="card">
+        <div class="card-header text-center">
+          <div class="row">
+            <div class="col-sm">
+              <img width="179" height="170" src="./img/logo" />
+            </div>
+            <div class="col-sm">
+              <h1 class="text-success">PERFECT TRADERS</h1>
+              <p class="text-dark">
+                S-01, Ward No.-10<br />Khijuriwas Bhiwadi, Rajasthan <br />
+                Contact No. 8396989932 / 8396989934 <br />GSTN: 08KSPPK7930C1ZA
+                <br />
+                E-mail:- perfecttraders011@gmail.com
+              </p>
+            </div>
+          </div>
+          <div class="row text-center bg-light h-50 colorPrint">
+            <b>Commercial offer</b>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm text-center bg-light h-50 colorPrint">
+              <b>Customer Info</b>
+            </div>
+            <div class="col-sm text-center bg-secondary h-50">
+              <div class="row">
+                <div class="col-sm text-center bg-light h-50 colorPrint">
+                  <b>Date: </b><i id="date"></i>
+                </div>
+                <div class="col-sm text-center bg-light h-50 colorPrint">
+                  <b>Valid: </b><i id="validTill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm text-center h-50">
+              <textarea
+                class="form-control"
+                id="clientName"
+                rows="3"
+                placeholder="Client address"
+              ></textarea>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text w-auto">Dear,</span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control w-auto"
+                  placeholder="Client name"
+                  value=""
+                />
+              </div>
+            </div>
+            <div class="col-sm text-center h-50">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text w-auto">Quotation #</span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control w-auto"
+                  placeholder="PT/1972"
+                  value=""
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row bg-light">
+            <b
+              ><i
+                >Thankyou for your inquiry. Please find below prices for your
+                required items</i
+              ></b
+            >
+          </div>
+          <br />
+
+          <table class="table table-bordered">
+            <thead class="table-success">
+              <tr>
+                <th scope="col" class="text-center">S.No.</th>
+                <th scope="col" class="text-center">ITEM</th>
+                <th scope="col" class="text-center">HSN CODE</th>
+                <th scope="col" class="text-center">QTY.</th>
+                <th scope="col" class="text-center">UNIT PRICE</th>
+                <th scope="col" class="text-center">DISC %</th>
+                <th scope="col" class="text-center">AMOUNT</th>
+                <th scope="col" class="NoPrint">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-success"
+                    onclick="BtnAdd()"
+                  >
+                    +
+                  </button>
+                </th>
+              </tr>
+            </thead>
+            <tbody id="TBody">
+              <tr id="TRow" class="d-none">
+                <th scope="row">1</th>
+                <td>
+                  <textarea
+                    class="form-control w-auto h-auto"
+                    id="itemDesc"
+                    rows="2"
+                    placeholder="Item description"
+                  ></textarea>
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    class="form-control text-center"
+                    name="HSNCode"
+                    placeholder="HSN Code"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    class="form-control text-center"
+                    name="qty"
+                    placeholder="Quantity"
+                    onchange="Calc(this);"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    class="form-control text-center"
+                    name="rate"
+                    placeholder="Unit price"
+                    onchange="Calc(this);"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    class="form-control text-center"
+                    name="disc"
+                    placeholder="Discount %"
+                    onchange="Calc(this);"
+                  />
+                </td>
+                <td>
+                  <input
+                    type="number"
+                    class="form-control text-center"
+                    name="amt"
+                    value="0"
+                    disabled=""
+                  />
+                </td>
+                <td class="NoPrint">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-danger"
+                    onclick="BtnDel(this)"
+                  >
+                    X
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="row">
+            <div class="col-6">
+              <b><i>Thank you for your business!</i></b>
+            </div>
+            <div class="col-6">
+              <div class="input-group mb-3">
+                <span class="input-group-text"><b>SUBTOTAL</b></span>
+                <input
+                  type="number"
+                  class="form-control text-end"
+                  id="FTotal"
+                  name="FTotal"
+                  disabled=""
+                />
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><b>SGST @ 9%</b></span>
+                <input
+                  type="number"
+                  class="form-control text-end"
+                  id="FGST"
+                  name="FGST"
+                  disabled=""
+                />
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><b>CGST @ 9%</b></span>
+                <input
+                  type="number"
+                  class="form-control text-end"
+                  id="FCGST"
+                  name="FCGST"
+                  disabled=""
+                />
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><b>TOTAL QUOTE &#8377;</b></span>
+                <input
+                  type="number"
+                  class="form-control text-end"
+                  id="FNet"
+                  name="FNet"
+                  disabled=""
+                />
+              </div>
+            </div>
+          </div>
+          <!-- footer -->
+          <div class="row footer">
+            <em
+              >This quotation is not a contract or a bill. It is our best guess
+              at the total price for the service and goods described above. The
+              customer will be billed after indicating acceptance of this quote.
+              Payment will be due prior to the delivery of service and goods.
+              Please mail the signed quote to the address listed above.</em
+            >
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-sm h-50"><strong>Customer Acceptance</strong></div>
+          </div>
+          <div class="row">
+            <div class="col-6 text-center h-50 border">&nbsp;</div>
+            <div class="col-3 text-center h-50 border">&nbsp;</div>
+            <div class="col-3 text-center h-50 border">&nbsp;</div>
+          </div>
+          <div class="row">
+            <div class="col-6 bg-white h-50 text-muted">Signature</div>
+            <div class="col-3 bg-white h-50 text-muted">Printed Name</div>
+            <div class="col-3 bg-white h-50 text-muted">Date</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8">
+          <button type="button" class="btn btn-primary" onclick="GetPrint()">
+            Print
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
