@@ -59,6 +59,7 @@ function GetTotal()
     document.getElementById("FTotal").value = sum.toFixed(2);
     document.getElementById("FGST").value = (sum*9/100).toFixed(2);
     document.getElementById("FCGST").value = (sum*9/100).toFixed(2);
+    document.getElementById("I_GST").value = (sum*18/100).toFixed(2);
     document.getElementById("FNet").value = ((sum) + (sum*18/100)).toFixed(2);
 
 }
@@ -78,3 +79,17 @@ var newDate = new Date(now.setMonth(now.getMonth()+1)).toLocaleString('en-us',{d
 // newDate = newDate.setMonth(newDate.getMonth() + 1,newDate.getDay())
 document.querySelector('#validTill').textContent = newDate
 }
+
+// For IGST
+$(document).ready(function(){
+    $("#igst_btn").click(function(){
+      $("#igst").toggle();
+    });
+  });
+
+// For cgst
+$(document).ready(function(){
+    $("#cgst_btn").click(function(){
+      $(".cgst").toggle();
+    });
+  });
