@@ -31,21 +31,8 @@
     <div class="container">
       <br />
       <div class="card">
-        <div class="card-header text-center">
-          <div class="row">
-            <div class="col-sm">
-              <img width="179" height="170" src="./img/logo" />
-            </div>
-            <div class="col-sm">
-              <h1 class="text-success">PERFECT TRADERS</h1>
-              <p class="text-dark">
-                S-01, Ward No.-10<br />Khijuriwas Bhiwadi, Rajasthan <br />
-                Contact No. 8396989932 / 8396989934 <br />GSTN: 08KSPPK7930C1ZA
-                <br />
-                E-mail:- perfecttraders011@gmail.com
-              </p>
-            </div>
-          </div>
+        <div id="chead" class="card-header text-center">
+          <img width="600" height="200" src="./logo" />
           <div class="row text-center bg-light h-50 colorPrint">
             <b>Commercial offer</b>
           </div>
@@ -214,7 +201,17 @@
                   disabled=""
                 />
               </div>
-              <div class="input-group mb-3">
+              <div class="input-group mb-3 cgst" id="igst">
+                <span class="input-group-text"><b>IGST @ 18%</b></span>
+                <input
+                  type="number"
+                  class="form-control text-end"
+                  id="I_GST"
+                  name="I_GST"
+                  disabled=""
+                />
+              </div>
+              <div class="input-group mb-3 cgst">
                 <span class="input-group-text"><b>SGST @ 9%</b></span>
                 <input
                   type="number"
@@ -224,7 +221,7 @@
                   disabled=""
                 />
               </div>
-              <div class="input-group mb-3">
+              <div class="input-group mb-3 cgst">
                 <span class="input-group-text"><b>CGST @ 9%</b></span>
                 <input
                   type="number"
@@ -276,6 +273,12 @@
         <div class="col-8">
           <button type="button" class="btn btn-primary" onclick="GetPrint()">
             Print
+          </button>
+          <button type="button" class="btn btn-success" id="cgst_btn">
+            CGST
+          </button>
+          <button type="button" class="btn btn-warning" id="igst_btn">
+            IGST
           </button>
         </div>
       </div>
